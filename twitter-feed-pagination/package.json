@@ -1,5 +1,5 @@
 {
-  "name": "twitter-feed",
+  "name": "twitter-feed-pagination",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
