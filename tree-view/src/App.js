@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,7 +7,7 @@ import mockData from './feature/mockData';
 import './feature/TreeNode.css';
 
 
-class App extends Component {
+class App extends React.Component {
   render() {
 
     const tree1 = mockData.mock1.map(child => {

@@ -19,33 +19,10 @@ class TreeNode extends React.Component {
   }
 
   render() {
-    let subtree = null;
-
     const { children } = this.props.data;
-    if (children) {
-      subtree = children.map(child => {
-        return <TreeNode key={child.id} data={child} />;
-      });
-    }
 
-    let containerClassName = 'tree-node-children';
-    if (this.state.collapsed) {
-      containerClassName += ' tree-node-children-collapsed';
-    }
-
-    if (subtree) {
-      return (
-        <div className="tree-node">
-          <a data-id={this.props.data.id} onClick={this.handleClick}>
-            {this.props.data.name}
-          </a>
-          <div className={containerClassName}>
-            {subtree}
-          </div>
-        </div>
-      );
-    }
-    else {
+    // base case
+    if (!children) {
       return (
         <div className="tree-node-leaf">
           <a data-id={this.props.data.id}>
@@ -54,6 +31,27 @@ class TreeNode extends React.Component {
         </div>
       );
     }
+
+    // recursive calls
+    const subtree = children.map(child => {
+      return <TreeNode key={child.id} data={child} />;
+    });
+
+    let containerClassName = 'tree-node-children';
+    if (this.state.collapsed) {
+      containerClassName += ' tree-node-children-collapsed';
+    }
+
+    return (
+      <div className="tree-node">
+        <a data-id={this.props.data.id} onClick={this.handleClick}>
+          {this.props.data.name}
+        </a>
+        <div className={containerClassName}>
+          {subtree}
+        </div>
+      </div>
+    );
   }
 }
 
