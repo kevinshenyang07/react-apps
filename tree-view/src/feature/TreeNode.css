@@ -1,0 +1,19 @@
+/* the tree node's style */
+
+.tree-node {
+    overflow-y: hidden;
+}
+
+/* style for the container */
+.tree-node-children {
+    margin-left: 15px;
+}
+
+/* style for the leaf */
+.tree-node-leaf {
+    margin-left: 12px;
+}
+
+.tree-node-children-collapsed {
+    height: 0px;
+}
