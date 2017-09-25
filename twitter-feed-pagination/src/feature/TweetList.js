@@ -1,6 +1,8 @@
 import React from 'react';
 import Tweet from './Tweet';
 import './TweetList.css';
+import feedData from './feedData';
+
 
 class TweetList extends React.Component {
   constructor(props) {
@@ -49,12 +51,18 @@ class TweetList extends React.Component {
   }
 
   loadTweetsFromServer(url) {
-    // standard ajax call
-    return $.ajax({
-      method: 'GET',
-      url: url,
-      datatype: 'json',
+    // fetch ajax call
+    // return $.ajax({
+    //   method: 'GET',
+    //   url: url,
+    //   datatype: 'json',
+    // });
+
+    // using retrieved json
+    const promise = new Promise((resolve, reject) => {
+      resolve(feedData);
     });
+    return promise;
   }
 
   createCurrentTweetComponents() {
@@ -103,7 +111,7 @@ class TweetList extends React.Component {
       return (
         <div className="background">
           <div className="container">
-            <h2>Tapingo Twitter Assignment</h2>
+            <h2>Tapingo Twitter Feed</h2>
             <ul id="tweet-list">{tweetComponents}</ul>
             <ul id="page-numbers">{pagination}</ul>
           </div>
